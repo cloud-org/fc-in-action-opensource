@@ -2,11 +2,12 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [ex4](#ex4)
+- [ex5](#ex5)
+- [小结](#%E5%B0%8F%E7%BB%93)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### ex4
+### ex5
 
 测试长时间运行+心跳包+执行完成之后进行消息通知
 
@@ -53,3 +54,7 @@
 2022-06-02 00:19:06FC Invoke End RequestId: e3512ceb-99fc-4c58-9160-c8b931704e11
 2022-06-02 00:19:072022-06-02 00:19:07 8c54a949-5420-46d9-ae87-b1ee6ded9e8e [INFO] main.go:66: 休眠 10s
 ```
+
+### 小结
+
+可以考虑还是使用同步的方法，然后提供多一个 ping 方法，在发送正式请求前发起 ping，避免冷启动。
