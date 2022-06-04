@@ -2,7 +2,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fc-in-action/aliyun"
 	"log"
 	"os"
@@ -57,28 +56,14 @@ func _main(args []*string) (_err error) {
 	invokeFunctionHeaders := &fc_open20210406.InvokeFunctionHeaders{
 		XFcInvocationType: tea.String("Async"), // 同步调用
 	}
-	// 封装请求体
-	// request := Req{
-	// 	Event: "ping",
-	// }
-	request := Req{
-		Event: "orderSync",
-		OrderData: &OrderData{
-			TicketId:   "这是票种id",
-			ActivityId: "这是活动id",
-		},
-	}
-	body, err := json.Marshal(&request)
-	if err != nil {
-		log.Println("json marshal err:", err)
-		return err
-	}
+	// 封装请求体 also can json.Marshal struct
+	body := []byte(`{"payload": "ping"}`)
 	invokeFunctionRequest := &fc_open20210406.InvokeFunctionRequest{
 		Body: body,
 	}
 	runtime := &util.RuntimeOptions{}
-	serverName := "xd"              // 服务名
-	functionName := "func-15i9eih2" // 函数名
+	serverName := "xd"         // 服务名
+	functionName := "orderrpc" // 函数名
 	resp, _err := client.InvokeFunctionWithOptions(tea.String(serverName), tea.String(functionName), invokeFunctionRequest, invokeFunctionHeaders, runtime)
 	if _err != nil {
 		return _err
