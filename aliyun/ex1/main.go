@@ -28,7 +28,7 @@ func CreateClient(accessKeyId *string, accessKeySecret *string) (_result *fc_ope
 		AccessKeySecret: accessKeySecret,
 	}
 	// 访问的域名
-	endpoint := "***REMOVED***"
+	endpoint := ""
 	config.Endpoint = tea.String(endpoint)
 	_result = &fc_open20210406.Client{}
 	_result, _err = fc_open20210406.NewClient(config)

@@ -65,14 +65,14 @@ func OrderLogic(fctx *fccontext.FcContext, req *Req) {
 	time.Sleep(10 * time.Second)
 	fctx.GetLogger().Info("休眠 10s")
 	// push to pushdeer
-	// url := "http://***REMOVED***:9000/?requestId="
+	// url := "http://127.0.0.1:9000/?requestId="
 	// resp, err := req2.Get(url + fctx.RequestID)
 	// if err != nil {
 	// 	log.Println("err, ", err)
 	// 	return
 	// }
 	// log.Println("resp is", resp.String())
-	mp := msgpush.NewPushDeer("***REMOVED***")
+	mp := msgpush.NewPushDeer("")
 	err := mp.Send(fmt.Sprintf("%v-%v", fctx.RequestID, *req.OrderData))
 	log.Println("err is", err)
 }

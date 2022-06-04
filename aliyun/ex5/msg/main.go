@@ -23,7 +23,7 @@ func HelloServer(w http.ResponseWriter, r *http.Request) {
 }
 
 func SendMsg(id string) {
-	mp := msgpush.NewPushDeer("***REMOVED***")
+	mp := msgpush.NewPushDeer("")
 	value := time.Now().String()
 	err := mp.Send(id + " " + value)
 	log.Println("err is", err)
